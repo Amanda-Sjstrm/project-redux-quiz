@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { quiz } from 'reducers/quiz';
+import { QuestionContainer, OptionContainer, Wrapper } from './GlobalStyles';
 import { Summary } from './Summary';
-
 import { Form } from './Form';
 import { NavButtons } from './NavButtons';
 
@@ -36,30 +36,36 @@ export const CurrentQuestion = () => {
       {quizOver ? (
         <Summary />
       ) : (
-        <div>
-          <h2> Question {question.id} of 5 </h2>
-          <h3> {question.questionText} </h3>
-          {question.options.map((option, index) => {
-            return (
-              <Form
-                setAnswer={setAnswer}
-                setOptionIndex={setOptionIndex}
-                answer={answer}
-                questionAnswered={questionAnswered}
-                option={option}
-                index={index}
-                answerIndex={optionIndex}
-                correctIndex={question.correctAnswerIndex} />
-            );
-          })}
-          <NavButtons
-            questionAnswered={questionAnswered}
-            handleOkayButtonClick={handleOkayButtonClick}
-            questionId={question.id}
-            optionIndex={optionIndex}
-            handleNextButton={handleNextButton}
-            answer={answer} />
-        </div>
+        <Wrapper>
+          <QuestionContainer>
+            <h2> Question {question.id} of 5 </h2>
+            <h3> {question.questionText} </h3>
+
+            <OptionContainer>
+              {question.options.map((option, index) => {
+                return (
+                  <Form
+                    setAnswer={setAnswer}
+                    setOptionIndex={setOptionIndex}
+                    answer={answer}
+                    questionAnswered={questionAnswered}
+                    option={option}
+                    index={index}
+                    answerIndex={optionIndex}
+                    correctIndex={question.correctAnswerIndex} />
+                );
+              })}
+            </OptionContainer>
+
+            <NavButtons
+              questionAnswered={questionAnswered}
+              handleOkayButtonClick={handleOkayButtonClick}
+              questionId={question.id}
+              optionIndex={optionIndex}
+              handleNextButton={handleNextButton}
+              answer={answer} />
+          </QuestionContainer>
+        </Wrapper>
       )}
     </section>
   );

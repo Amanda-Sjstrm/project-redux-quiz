@@ -1,4 +1,5 @@
 import React from 'react';
+import { Buttons } from './GlobalStyles';
 
 export const NavButtons = ({
   questionAnswered,
@@ -12,17 +13,17 @@ export const NavButtons = ({
       For the Nästa button, you can only click on it if the OK button is clicked. */
   return (
     <div>
-      <button
+      <Buttons
         onClick={() => handleOkayButtonClick(questionId, optionIndex)}
         type="submit"
         disabled={questionAnswered || !answer}>
         OK
-      </button>
+      </Buttons>
 
-      <button type="button" onClick={() => handleNextButton()} disabled={!questionAnswered}>
+      <Buttons type="button" onClick={() => handleNextButton()} disabled={!questionAnswered}>
         {' '}
         Next
-      </button>
+      </Buttons>
     </div>
   );
 };

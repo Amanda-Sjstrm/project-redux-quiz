@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import headerImg from '../assets/header-image.png';
-import { Wrapper } from './GlobalStyles';
+import { Wrapper, QuestionContainer } from './GlobalStyles';
 import bmo from '../assets/bmo.gif';
 
 const HeaderImage = styled.img`
@@ -14,6 +14,7 @@ const HeaderImage = styled.img`
     max-width: 600px;
   }
   @media (min-width: 1024px) {
+    width: 90%;
   }
 `;
 
@@ -39,9 +40,13 @@ const Button = styled.button`
 
 export const OpeningScreen = () => {
   return (
-    <>
-      <HeaderImage className="header-image" src={headerImg} alt="header with Adventure Time text" />
-      <Wrapper>
+    <Wrapper>
+      <QuestionContainer>
+        <HeaderImage
+          className="header-image"
+          src={headerImg}
+          alt="header with Adventure Time text" />
+
         <p>This is the quiz!</p>
         <p>Good luck and have fun!</p>
         <ButtonAndBmo>
@@ -50,7 +55,7 @@ export const OpeningScreen = () => {
           </NavLink>
           <BmoImg src={bmo} alt="bmo gif" />
         </ButtonAndBmo>
-      </Wrapper>
-    </>
+      </QuestionContainer>
+    </Wrapper>
   );
 };
